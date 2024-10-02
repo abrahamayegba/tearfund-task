@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "FSMeWeb", Arial, sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section,
+.bottom-section {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Mobile layout: Two images split vertically */
+@media (max-width: 768px) {
+  .top-section {
+    height: 50vh;
+    background-image: url("/images/WhereYourMoneyGoes-Mobile.png");
+    background-size: cover;
+  }
+
+  .bottom-section {
+    height: 50vh;
+    background-image: url("/images/Rectangle.png");
+    background-size: cover;
+  }
+}
+
+/* Desktop layout: Fullscreen single image */
+@media (min-width: 769px) {
+  .top-section {
+    flex: 1;
+    height: 100vh;
+    background-image: url("/images/Mask.png");
+    background-size: cover;
+  }
+
+  .bottom-section {
+    display: none;
+  }
+}
+
+/* Custom Font Face */
+@font-face {
+  font-family: "FSMeWeb";
+  src: url("/fonts/FSMeWeb-Regular_rcfffc.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "FSMeWeb";
+  src: url("/fonts/FSMeWeb-Bold_ce2eoa.woff2") format("woff2");
+  font-weight: bold;
+}
+
+.info-box {
+  width: 90%;
+  max-width: 800px;
+  min-height: 450px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Desktop-specific styles */
+@media (min-width: 769px) {
+  .info-box {
+    max-width: 400px;
+    bottom: 50%;
+    right: 150px;
+    padding: 25px;
+    left: auto;
+    transform: translateY(50%);
+  }
+}
+
+/* Tablet-specific styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .info-box {
+    right: 20px;
+  }
+}
+
+.hero-title {
+  font-family: "FSMeWeb", sans-serif;
+  font-size: 22px;
+  color: #333333;
+  line-height: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sub-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 26px;
+}
+
+.sub-title-highlight {
+  font-weight: 700;
+  color: #333333;
+  margin-top: 10px;
+  display: block;
+}
+
+.tab-navigation {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.tab-button {
+  cursor: pointer;
+  width: 50%;
+  font-weight: 700;
+  margin-top: 10px;
+  font-family: "FSMeWeb", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: white;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.indicator-line {
+  height: 4px;
+  width: 48px;
+  background-color: #008caa;
+  margin: 10px 0;
+}
+
+/* Button styles */
+.tab-button:first-child {
+  background-color: #6f3f87;
+}
+
+.tab-button.active {
+  background-color: #6f3f87;
+}
+
+.tab-button:nth-child(2) {
+  background-color: #173145;
+}
+
+@media (min-width: 768px) {
+  /* Hide <br> on large screens */
+  .hidden-on-large {
+    display: none;
+  }
+}
+
+/* Active state styles */
+.tab-button.active:nth-child(2) {
+  background-color: #173145;
+}
+
+.tab-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 10px;
+}
+
+.tab-description {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  width: 100%;
+  min-height: 156px;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+/* Tab content background colors */
+.tab-content#tab1 {
+  background-color: #6f3f87;
+  color: white;
+}
+
+.tab-content#tab2 {
+  background-color: #173145;
+  color: white;
+}
+
+/* Pointer styles */
+.pointer1,
+.pointer2 {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  display: none;
+}
+
+.pointer1 {
+  left: 25%;
+  border-bottom: 10px solid #6f3f87;
+}
+
+.pointer2 {
+  left: 75%;
+  border-bottom: 10px solid #173145;
+}
+
+.tab-content.active .pointer1,
+.tab-content.active .pointer2 {
+  display: block;
+}
